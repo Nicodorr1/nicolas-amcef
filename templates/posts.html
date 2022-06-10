@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block siteTitle %} All posts {% endblock %}
+
+{% block firstSection %}
+<div class="container-fluid">
+    <div class="row px-2">
+
+        {% for djpost in dj_posts %}
+
+        <div class="col-xs-12 col-lg-4 col-md-6 mt-4 mb-4 card">
+            <h4 class="group inner list-group-item-heading">{{djpost.title}}</h4>
+            <p class="group inner list-group-item-text">{{djpost.body}}</p>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <a class="btn btn-success" href="{% url 'api:post_detail' id=djpost.id %}">
+                  Details
+                </a>
+              </div>
+            </div>
+          </div>
+
+    {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
